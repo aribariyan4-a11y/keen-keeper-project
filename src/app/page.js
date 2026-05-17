@@ -1,7 +1,15 @@
+import BannerPage from './../components/home/Banner';
+import SummaryPage from './../components/home/SummaryCards';
+import FriendsSectionPage from './../components/home/FriendsSection';
+
+
+
 export default function Home() {
   return (
-    <div>
-      <h1 className="text-center my-48 mx-48">Keen Keeper</h1>
-    </div>
+    <main>
+      <BannerPage/>
+      <SummaryPage/>
+      <FriendsSectionPage/>
+    </main>
   );
 }
