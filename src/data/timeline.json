@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "type": "call",
+    "friend": "Alex Johnson",
+    "date": "2026-05-18",
+    "title": "Call with Alex Johnson"
+  },
+  {
+    "id": 2,
+    "type": "text",
+    "friend": "Sarah Williams",
+    "date": "2026-05-17",
+    "title": "Text with Sarah Williams"
+  },
+  {
+    "id": 3,
+    "type": "video",
+    "friend": "Emma Watson",
+    "date": "2026-05-15",
+    "title": "Video with Emma Watson"
+  },
+  {
+    "id": 4,
+    "type": "call",
+    "friend": "Michael Lee",
+    "date": "2026-05-13",
+    "title": "Call with Michael Lee"
+  },
+  {
+    "id": 5,
+    "type": "text",
+    "friend": "Olivia Brown",
+    "date": "2026-05-10",
+    "title": "Text with Olivia Brown"
+  }
+]
