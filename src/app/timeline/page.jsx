@@ -1,79 +1,149 @@
-import timelineData from "@/data/timeline.json";
+"use client";
+
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function TimelinePage() {
 
+    const [timelineData, setTimelineData] = useState([]);
+
+    useEffect(() => {
+
+        const storedTimeline =
+            JSON.parse(localStorage.getItem("timeline")) || [];
+
+        setTimelineData(storedTimeline);
+
+    }, []);
+
     return (
 
-        <section className="py-10 min-h-screen">
+        <section className="w-11/12 max-w-6xl mx-auto py-10">
 
-            <div className="w-11/12 max-w-5xl mx-auto">
+            {/* Heading */}
+            <div className="mb-8">
 
-                {/* Heading */}
-                <div className="mb-8">
+                <h1 className="text-4xl font-bold text-black">
 
-                    <h1 className="text-5xl font-bold text-gray-900">
+                    Timeline
 
-                        Timeline
+                </h1>
 
-                    </h1>
+                <p className="text-gray-500 mt-2">
 
-                </div>
+                    Track all your friendship interactions.
 
-                {/* Filter */}
-                <div className="mb-8">
+                </p>
 
-                    <select className="select select-bordered w-full max-w-xs bg-white">
+            </div>
 
-                        <option>Filter timeline</option>
-                        <option>Call</option>
-                        <option>Text</option>
-                        <option>Video</option>
+            {/* Empty State */}
+            {
+                timelineData.length === 0 && (
 
-                    </select>
+                    <div className="bg-white rounded-2xl p-10 text-center shadow-sm border border-gray-100">
 
-                </div>
+                        <h2 className="text-2xl font-bold text-gray-700">
 
-                {/* Timeline List */}
-                <div className="space-y-4">
+                            No Timeline Found
 
-                    {timelineData.map((item) => (
+                        </h2>
+
+                        <p className="text-gray-500 mt-2">
+
+                            Start checking in with your friends.
+
+                        </p>
+
+                    </div>
+                )
+            }
+
+            {/* Timeline Cards */}
+            <div className="space-y-4">
+
+                {
+                    timelineData.map((item) => (
 
                         <div
                             key={item.id}
-                            className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm flex items-center gap-4"
+                            className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm flex items-center justify-between"
                         >
 
-                            {/* Icon */}
-                            <div className="text-3xl">
+                            {/* Left */}
+                            <div className="flex items-center gap-4">
 
-                                {item.type === "call" && "📞"}
-                                {item.type === "text" && "💬"}
-                                {item.type === "video" && "🎥"}
+                                {/* Icon */}
+                                <div className="bg-gray-100 p-3 rounded-full">
+
+                                    {
+                                        item.type === "Call" && (
+                                            <Image
+                                                src="/images/call.png"
+                                                alt="call"
+                                                width={20}
+                                                height={20}
+                                            />
+                                        )
+                                    }
+
+                                    {
+                                        item.type === "Text" && (
+                                            <Image
+                                                src="/images/text.png"
+                                                alt="text"
+                                                width={20}
+                                                height={20}
+                                            />
+                                        )
+                                    }
+
+                                    {
+                                        item.type === "Video" && (
+                                            <Image
+                                                src="/images/video.png"
+                                                alt="video"
+                                                width={20}
+                                                height={20}
+                                            />
+                                        )
+                                    }
+
+                                </div>
+
+                                {/* Title */}
+                                <div>
+
+                                    <h2 className="font-bold text-lg text-black">
+
+                                        {item.title}
+
+                                    </h2>
+
+                                    <p className="text-gray-500 text-sm">
+
+                                        {item.date}
+
+                                    </p>
+
+                                </div>
 
                             </div>
 
-                            {/* Content */}
+                            {/* Type Badge */}
                             <div>
 
-                                <h2 className="text-lg font-semibold text-gray-900">
+                                <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
 
-                                    {item.title}
+                                    {item.type}
 
-                                </h2>
-
-                                <p className="text-gray-500 text-sm mt-1">
-
-                                    {item.date}
-
-                                </p>
+                                </span>
 
                             </div>
 
                         </div>
-
-                    ))}
-
-                </div>
+                    ))
+                }
 
             </div>
 
