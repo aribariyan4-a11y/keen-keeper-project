@@ -26,7 +26,7 @@ export default function StatsPage() {
                 Friendship Analytics
             </h1>
 
-            <div className="border-2 border-dashed border-blue-400 rounded-2xl p-6">
+            <div className="bg-gray-200 rounded-2xl p-6">
 
                 <div className="bg-white rounded-xl p-6">
 
@@ -47,7 +47,8 @@ export default function StatsPage() {
                                 ))}
                             </Pie>
 
-                            <Legend />
+
+                            <Legend/>
 
                         </PieChart>
                     )}
