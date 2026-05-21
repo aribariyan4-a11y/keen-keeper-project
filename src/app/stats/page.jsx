@@ -26,7 +26,7 @@ export default function StatsPage() {
                 Friendship Analytics
             </h1>
 
-            <div className="bg-gray-200 rounded-2xl p-6">
+            <div className="bg-gray-200 rounded-2xl p-4">
 
                 <div className="bg-white rounded-xl p-6">
 
@@ -41,7 +41,7 @@ export default function StatsPage() {
                     ) : (
 
                         <PieChart width={400} height={300}>
-                            <Pie data={chartData} cx={200} cy={130} innerRadius={80} outerRadius={120} paddingAngle={3} dataKey="value">
+                            <Pie data={chartData} cx="50%" cy="50%" innerRadius={80} outerRadius={120} paddingAngle={3} dataKey="value">
                                 {chartData.map((entry) => (
                                     <Cell key={entry.name} fill={COLORS[entry.name]} />
                                 ))}
@@ -49,6 +49,7 @@ export default function StatsPage() {
 
 
                             <Legend/>
+                            <Tooltip></Tooltip>
 
                         </PieChart>
                     )}
